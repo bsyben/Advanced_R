@@ -110,6 +110,43 @@ factor <- function(x = character(), levels = unique(x)) {
     validate_factor(new_factor(ind, levels))
 }
 
+x <- data.frame(1:10,2:11)
+
+new_data.frame <- function(x,n,row.names=NULL){
+    stopifnot(is.list(x))
+    stopifnot(all(lengths(x)==n))
+    
+    if (is.null(row.names)) {
+        row.names <- .set_row_names(n)
+    }else{
+        stopifnot(is.character(row.names),length(unique(row.names))==n)
+    }
+    
+    structure(
+        x,
+        class="data.frame",
+        row.names=row.names
+    )
+    
+}
+
+x <- list(a=1,b=2)
+new_data.frame(x,n=1,row.names = "l1")
+new_data.frame(x,n=1)
+new_data.frame(list(),n=-1)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
